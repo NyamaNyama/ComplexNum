@@ -25,7 +25,7 @@ int main() {
 	assert((com1 / com2).isEqual(Complex<double>(5)));
 
 	//Test equality to float and int number
-	assert(com1.isEqualFloatInt(32));
+	assert(!com1.isEqualFloatInt(32));
 
 	//Test Pow
 	assert(com2.Pow(2).isEqual(Complex<double>(-3, 4)));
@@ -67,7 +67,7 @@ int main() {
 	assert((com6 / com7).isEqual(Complex<int>(5)));
 
 	//Test equality to float and int number
-	assert(com6.isEqualFloatInt(32));
+	assert(!com6.isEqualFloatInt(32));
 
 	//Test Pow
 	assert(com7.Pow(2).isEqual(Complex<int>(-3, 4)));

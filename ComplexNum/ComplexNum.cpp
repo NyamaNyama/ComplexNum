@@ -43,7 +43,7 @@ Complex<T> Complex<T>:: operator-(const Complex<T>& comp2) const {
 
 template <typename T>
 Complex<T> Complex<T>:: operator*(const Complex<T>& comp2) const {
-	T newReal = (this->_real * comp2._real + this->_imaginary * comp2._imaginary);
+	T newReal = (this->_real * comp2._real - this->_imaginary * comp2._imaginary);
 	T newIm = (this->_imaginary * comp2._real + this->_real * comp2._imaginary);
 	return Complex<T>(newReal, newIm);
 }
@@ -54,7 +54,7 @@ Complex<T> Complex<T>:: operator/(const Complex<T>& comp2) const {
 		throw std::runtime_error("Division by zero");
 	}
 	T newReal = (this->_real * comp2._real + this->_imaginary * comp2._imaginary) / (pow(comp2._real, 2) + pow(comp2._imaginary, 2));
-	T newIm = (this->_imaginary * comp2._real + this->_real * comp2._imaginary) / (pow(comp2._real, 2) + pow(comp2._imaginary, 2));
+	T newIm = (this->_imaginary * comp2._real - this->_real * comp2._imaginary) / (pow(comp2._real, 2) + pow(comp2._imaginary, 2));
 	return Complex<T>(newReal, newIm);
 }
 
@@ -72,12 +72,12 @@ Complex<T> Complex<T>::Pow(int degree) {
 
 template <typename T>
 bool Complex<T>::isEqual(const Complex<T>& comp2) const {
-	return (std::abs(this->_real - comp2._real) < epsilon && std::abs(this->_imaginary - comp2._imaginary) < epsilon);
+	return (std::abs(this->_real - comp2._real) < epsilon && (std::abs(this->_imaginary - comp2._imaginary) < epsilon));
 }
 
 template<typename T>
 bool Complex<T>::isEqualFloatInt(T num2) const {
-	return (std::abs(this->_real - num2) < epsilon && std::abs(this->_imaginary) < epsilon);
+	return ((std::abs(this->_real - num2) < epsilon) && (std::abs(this->_imaginary) < epsilon));
 }
 
 template<typename T>
@@ -95,3 +95,8 @@ class Complex<double>;
 
 template
 class Complex<int>;
+
+int main() {
+	Complex<int> c1(1, 2);
+	std::cout << c1.Pow(2).GetReal();
+}
