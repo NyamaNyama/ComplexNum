@@ -96,7 +96,3 @@ class Complex<double>;
 template
 class Complex<int>;
 
-int main() {
-	Complex<int> c1(1, 2);
-	std::cout << c1.Pow(2).GetReal();
-}
