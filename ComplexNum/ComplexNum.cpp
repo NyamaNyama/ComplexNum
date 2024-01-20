@@ -1,7 +1,10 @@
 ﻿#include <iostream>
 #include "Complex.h"
-#include<cmath>
+#include <cmath>
+
+
 constexpr double epsilon = 1e-9;
+
 template <typename T>
 Complex<T>::Complex() : _real(0), _imaginary(0) {}
 
@@ -40,6 +43,7 @@ template <typename T>
 Complex<T> Complex<T>:: operator-(const Complex<T>& comp2) const {
 	return Complex<T>(this->_real - comp2._real, this->_imaginary - comp2._imaginary);
 }
+
 
 template <typename T>
 Complex<T> Complex<T>:: operator*(const Complex<T>& comp2) const {
@@ -90,9 +94,13 @@ void Complex<T>::Write() const {
 	}
 }
 
+
 template
 class Complex<double>;
 
 template
 class Complex<int>;
+
+
+
 

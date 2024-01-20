@@ -1,7 +1,7 @@
 #include "Complex.h"
 #include <cassert>
 #include <iostream>
-#include<cmath>
+#include <cmath>
 
 int main() {
 	Complex<double> com0(0, 0);
@@ -42,7 +42,9 @@ int main() {
 		assert(std::string(e.what()) == "Division by zero");
 	}
 
-
+	//Test literal
+	auto c1 = 7.5 + 8.9i;
+	assert(c1.isEqual(Complex<double>(7.5, 8.9)));
 
 	//same for integer
 
@@ -84,4 +86,7 @@ int main() {
 		assert(std::string(e.what()) == "Division by zero");
 	}
 
+	//Test int literal
+	auto c2 = 6 + 9i;
+	assert(c2.isEqual(Complex<int>(6, 9)));
 }
